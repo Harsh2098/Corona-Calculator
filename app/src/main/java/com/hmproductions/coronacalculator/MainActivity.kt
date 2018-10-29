@@ -132,12 +132,12 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        visualVoltageTextView.text = Vv.toString()
-        criticalVoltagetextView.text = Vc.toString()
-        acLossTextView.text = acLoss.toString()
-        dcLossTextView.text = dcLoss.toString()
-        ratioTextView.text = "1:$leastRatio"
-        maximumRadiusLossTextView.text = "N/A"
+        visualVoltageTextView.text = ": $Vv kV"
+        criticalVoltagetextView.text = ": $Vc kV"
+        acLossTextView.text = ": $acLoss kW"
+        dcLossTextView.text = ": $dcLoss kW"
+        ratioTextView.text = ": 1:$leastRatio"
+        maximumRadiusLossTextView.text = ": N/A"
     }
 
     fun View.hideKeyboard() {

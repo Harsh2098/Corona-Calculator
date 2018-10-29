@@ -8,18 +8,18 @@
     <string name="fair_weather">Fair Weather</string>
     <string name="storm_weather">Storm Weather</string>
     <string name="no_value"/>
-    <string name="visual_disruptive_voltage">Visual Disruptive Voltage :</string>
-    <string name="maximum_radius_loss">Maximum Radius Loss :</string>
-    <string name="ac_corona_loss">AC Corona Loss :</string>
+    <string name="visual_disruptive_voltage">Visual Disruptive Voltage</string>
+    <string name="maximum_radius_loss">Maximum Radius Loss</string>
+    <string name="ac_corona_loss">AC Corona Loss</string>
     <string name="mean_height">Mean Height (m)</string>
     <string name="pole_spacing">Pole Spacing (m)</string>
     <string name="max_surface_gradient">Max. Surface Gradient</string>
     <string name="sub_conductors">Sub-Conductors</string>
     <string name="distance_m">Distance (m)</string>
-    <string name="critical_disruptive_voltage">Critical Disruptive Voltage :</string>
-    <string name="optimal_height_to_spacing_ratio">Optimal Height to Spacing Ratio :</string>
+    <string name="critical_disruptive_voltage">Critical Disruptive Voltage</string>
+    <string name="optimal_height_to_spacing_ratio">Optimal Height to Spacing Ratio</string>
     <string name="hvdc_corona_loss">HVDC Corona Loss</string>
-    <string name="dc_corona_loss">DC Corona Loss :</string>
+    <string name="dc_corona_loss">DC Corona Loss</string>
     <string name="calculate">Calculate</string>
     <string name="year_of_installation">Year of Installation</string>
 </resources>

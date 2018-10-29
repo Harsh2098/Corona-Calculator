@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="2dp"
-    android:layout_marginTop="4dp"
+    android:paddingTop="4dp"
     android:background="@color/default_background"
     android:orientation="vertical"
     tools:ignore="Autofill">
@@ -206,7 +206,7 @@
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:layout_marginStart="12dp"
-            android:layout_marginTop="0dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="12dp"
             android:layout_marginBottom="4dp"
             android:background="@android:color/darker_gray" />
@@ -330,7 +330,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="2.5"
                 android:text="@string/critical_disruptive_voltage"
                 android:textColor="@android:color/background_dark"
                 android:textSize="16sp" />
@@ -339,7 +339,7 @@
                 android:id="@+id/criticalVoltagetextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:text="@string/no_value"
                 android:textColor="@android:color/background_dark"
                 android:textSize="16sp" />
@@ -355,7 +355,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="2.5"
                 android:text="@string/visual_disruptive_voltage"
                 android:textColor="@android:color/background_dark"
                 android:textSize="16sp" />
@@ -364,7 +364,7 @@
                 android:id="@+id/visualVoltageTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:text="@string/no_value"
                 android:textColor="@android:color/background_dark"
                 android:textSize="16sp" />
@@ -380,7 +380,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="2.5"
                 android:text="@string/maximum_radius_loss"
                 android:textColor="@android:color/background_dark"
                 android:textSize="16sp" />
@@ -389,7 +389,7 @@
                 android:id="@+id/maximumRadiusLossTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:text="@string/no_value"
                 android:textColor="@android:color/background_dark"
                 android:textSize="16sp" />
@@ -405,7 +405,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="2.5"
                 android:text="@string/ac_corona_loss"
                 android:textColor="@android:color/background_dark"
                 android:textSize="16sp" />
@@ -414,7 +414,7 @@
                 android:id="@+id/acLossTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:text="@string/no_value"
                 android:textColor="@android:color/background_dark"
                 android:textSize="16sp" />
@@ -430,7 +430,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="2.5"
                 android:text="@string/optimal_height_to_spacing_ratio"
                 android:textColor="@android:color/background_dark"
                 android:textSize="16sp" />
@@ -439,7 +439,7 @@
                 android:id="@+id/ratioTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:text="@string/no_value"
                 android:textColor="@android:color/background_dark"
                 android:textSize="16sp" />
@@ -455,7 +455,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="2.5"
                 android:text="@string/dc_corona_loss"
                 android:textColor="@android:color/background_dark"
                 android:textSize="16sp" />
@@ -464,7 +464,7 @@
                 android:id="@+id/dcLossTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:text="@string/no_value"
                 android:textColor="@android:color/background_dark"
                 android:textSize="16sp" />
