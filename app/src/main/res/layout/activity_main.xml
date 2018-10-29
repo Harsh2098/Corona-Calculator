@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="2dp"
-    android:paddingTop="4dp"
     android:background="@color/default_background"
     android:orientation="vertical"
+    android:paddingTop="4dp"
     tools:ignore="Autofill">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -60,7 +60,6 @@
                         android:inputType="numberDecimal"
                         android:maxLength="30"
                         android:maxLines="1"
-                        android:text="440"
                         android:textSize="16sp" />
 
                 </android.support.design.widget.TextInputLayout>
@@ -125,7 +124,6 @@
                         android:inputType="number"
                         android:maxLength="30"
                         android:maxLines="1"
-                        android:text="50"
                         android:textSize="16sp" />
 
                 </android.support.design.widget.TextInputLayout>
@@ -168,7 +166,6 @@
                 android:inputType="number"
                 android:maxLength="30"
                 android:maxLines="1"
-                android:text="2015"
                 android:textSize="16sp" />
 
         </android.support.design.widget.TextInputLayout>
@@ -339,8 +336,8 @@
                 android:id="@+id/criticalVoltagetextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/no_value"
+                android:layout_weight="1.4"
+                android:text="@string/base_start"
                 android:textColor="@android:color/background_dark"
                 android:textSize="16sp" />
 
@@ -364,8 +361,8 @@
                 android:id="@+id/visualVoltageTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/no_value"
+                android:layout_weight="1.4"
+                android:text="@string/base_start"
                 android:textColor="@android:color/background_dark"
                 android:textSize="16sp" />
 
@@ -389,8 +386,8 @@
                 android:id="@+id/maximumRadiusLossTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/no_value"
+                android:layout_weight="1.4"
+                android:text="@string/base_start"
                 android:textColor="@android:color/background_dark"
                 android:textSize="16sp" />
 
@@ -414,8 +411,8 @@
                 android:id="@+id/acLossTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/no_value"
+                android:layout_weight="1.4"
+                android:text="@string/base_start"
                 android:textColor="@android:color/background_dark"
                 android:textSize="16sp" />
 
@@ -439,8 +436,8 @@
                 android:id="@+id/ratioTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/no_value"
+                android:layout_weight="1.4"
+                android:text="@string/base_start"
                 android:textColor="@android:color/background_dark"
                 android:textSize="16sp" />
 
@@ -464,8 +461,8 @@
                 android:id="@+id/dcLossTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/no_value"
+                android:layout_weight="1.4"
+                android:text="@string/base_start"
                 android:textColor="@android:color/background_dark"
                 android:textSize="16sp" />
 

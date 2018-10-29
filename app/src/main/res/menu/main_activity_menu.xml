@@ -8,4 +8,10 @@
         android:title="@string/calculate"
         app:showAsAction="ifRoom" />
 
+    <item
+        android:id="@+id/plot_action"
+        android:icon="@drawable/plot_icon"
+        android:title="@string/plot"
+        app:showAsAction="ifRoom"/>
+
 </menu>

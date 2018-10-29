@@ -1,6 +1,7 @@
 package com.hmproductions.coronacalculator
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -8,10 +9,12 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import com.github.mikephil.charting.data.Entry
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.contentView
 import org.jetbrains.anko.toast
 import java.lang.Math.*
+import java.util.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,6 +27,7 @@ class MainActivity : AppCompatActivity() {
     private var acLoss: Float? = null
     private var dcLoss: Float? = null
     private var m_v: Float? = null
+    private var calculated = false
 
     private var pressure = 0.0F
     private var temperature = 0.0F
@@ -35,6 +39,8 @@ class MainActivity : AppCompatActivity() {
     private var height = 0.0F
     private var spacing = 0.0F
     private var maxSurfaceGrad = 0.0F
+
+    private val dcLossRatioVar = Array(100) { _ -> 0F }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +56,22 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.calculation_action -> calculate()
+
+            R.id.plot_action -> {
+                if(calculated) {
+                    val entries = ArrayList<Entry>()
+
+                    for (i in 1..100) {
+                        entries.add(Entry(i.toFloat(), dcLossRatioVar[i-1]))
+                    }
+
+                    val intent = Intent(this, GraphActivity::class.java)
+                    intent.putParcelableArrayListExtra(GraphActivity.ENTRIES, entries)
+                    startActivity(intent)
+                } else {
+                    toast("Calculate before plotting")
+                }
+            }
         }
         return super.onOptionsItemSelected(item)
     }
@@ -58,8 +80,10 @@ class MainActivity : AppCompatActivity() {
         if (temperatureEditText.text.toString().isBlank() || radiusEditText.text.toString().isBlank() ||
             pressureEditText.text.toString().isBlank() || distanceEditText.text.toString().isBlank() ||
             frequencyEditText.text.toString().isBlank() || voltageEditText.text.toString().isBlank() ||
-            poleSpacingEditText.text.toString().isBlank() || meanHeightEditText.text.toString().isBlank()
-        ) {
+            poleSpacingEditText.text.toString().isBlank() || meanHeightEditText.text.toString().isBlank() ||
+            yearsEditText.text.toString().isBlank() || noOfSubConductorsEditText.text.toString().isBlank() ||
+            maxSurfaceGradientEditText.text.toString().isBlank()) {
+
             toast("Please fill all fields")
             return false
         }
@@ -113,8 +137,6 @@ class MainActivity : AppCompatActivity() {
                     (-3).toDouble()
                 )).toFloat()
 
-        val dcLossRatioVar = Array(100) { _ -> 0F }
-
         for (i in 1..100) {
             dcLossRatioVar[i - 1] =
                     (2 * voltage * ((2.toDouble() / PI) * atan(2 / i.toDouble()) + 1) * 0.25 * subConductors * radius / 100 *
@@ -138,9 +160,11 @@ class MainActivity : AppCompatActivity() {
         dcLossTextView.text = ": $dcLoss kW"
         ratioTextView.text = ": 1:$leastRatio"
         maximumRadiusLossTextView.text = ": N/A"
+
+        calculated = true
     }
 
-    fun View.hideKeyboard() {
+    private fun View.hideKeyboard() {
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(windowToken, 0)
     }
