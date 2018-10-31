@@ -40,9 +40,9 @@ class GraphActivity : AppCompatActivity(), Miscellaneous.GetGraphDetails {
 
     companion object {
 
-        val RATIO_ENTRIES = "ratio-entries"
-        val RADIUS_ENTRIES = "radius-entries"
-        val TEMPERATURE_ENTRIES = "temperature-entries"
-        val PRESSURE_ENTRIES = "pressure-entries"
+        const val RATIO_ENTRIES = "ratio-entries"
+        const val RADIUS_ENTRIES = "radius-entries"
+        const val TEMPERATURE_ENTRIES = "temperature-entries"
+        const val PRESSURE_ENTRIES = "pressure-entries"
     }
 }

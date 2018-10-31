@@ -63,6 +63,7 @@ class MainActivity : AppCompatActivity() {
                     val ratioEntries = ArrayList<Entry>()
                     val temperatureEntries = ArrayList<Entry>()
                     val pressureEntries = ArrayList<Entry>()
+                    val radiusEntries = ArrayList<Entry>()
 
                     for (i in 1..100) {
                         ratioEntries.add(Entry(i.toFloat(), dcLossRatioVar[i-1]))
@@ -78,11 +79,20 @@ class MainActivity : AppCompatActivity() {
                                     pow(voltage.toDouble() - Vc!!, 2.toDouble()) * pow(10.toDouble(), (-5).toDouble())).toFloat()))
                     }
 
+                    var i = 0.01F
+                    while(i <= 3.5) {
+                        radiusEntries.add(Entry(i, (241 * pow(10.toDouble(), (-5).toDouble()) * ((frequency+25)/relativeAirDensity!!) *
+                                sqrt(i/(100.toDouble()*distance)) * pow((voltage - (i* SURFACE_GRADIENT_LIMIT * m_v!! * relativeAirDensity!! *log(100.toDouble() * distance/i))), 2.toDouble())).toFloat()))
+                        i += 0.01F
+                    }
+
                     val intent = Intent(this, GraphActivity::class.java)
                     intent.putParcelableArrayListExtra(GraphActivity.RATIO_ENTRIES, ratioEntries)
                     intent.putParcelableArrayListExtra(GraphActivity.TEMPERATURE_ENTRIES, temperatureEntries)
                     intent.putParcelableArrayListExtra(GraphActivity.PRESSURE_ENTRIES, pressureEntries)
+                    intent.putParcelableArrayListExtra(GraphActivity.RADIUS_ENTRIES, radiusEntries)
                     startActivity(intent)
+
                 } else {
                     toast("Calculate before plotting")
                 }
