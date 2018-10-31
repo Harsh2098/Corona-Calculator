@@ -15,6 +15,7 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.hmproductions.coronacalculator.R;
 import com.hmproductions.coronacalculator.utils.Miscellaneous.GetGraphDetails;
+import com.hmproductions.coronacalculator.utils.Miscellaneous.GraphType;
 
 import java.util.ArrayList;
 
@@ -37,12 +38,13 @@ public class RatioFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View customView =  inflater.inflate(R.layout.fragment_ratio, container, false);
+        View customView =  inflater.inflate(R.layout.fragment_graph, container, false);
 
         LineChart lineChart = customView.findViewById(R.id.ratioLineChart);
 
         if (getContext() != null) {
-            entries = graphDetails.getGraphDetails();
+
+            entries = graphDetails.getGraphDetails(GraphType.RATIO.ordinal());
 
             LineDataSet lineDataSet = new LineDataSet(entries, "Height to Spacing Ratio");
 

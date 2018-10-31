@@ -18,7 +18,7 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
-    private val g_o = 21.2F
+    private val SURFACE_GRADIENT_LIMIT = 21.2F
     private val currentYear = 2018F
 
     private var relativeAirDensity: Float? = null
@@ -45,6 +45,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(main_toolbar)
         Handler().postDelayed({contentView?.hideKeyboard() }, 200)
     }
 
@@ -59,14 +60,28 @@ class MainActivity : AppCompatActivity() {
 
             R.id.plot_action -> {
                 if(calculated) {
-                    val entries = ArrayList<Entry>()
+                    val ratioEntries = ArrayList<Entry>()
+                    val temperatureEntries = ArrayList<Entry>()
+                    val pressureEntries = ArrayList<Entry>()
 
                     for (i in 1..100) {
-                        entries.add(Entry(i.toFloat(), dcLossRatioVar[i-1]))
+                        ratioEntries.add(Entry(i.toFloat(), dcLossRatioVar[i-1]))
+                    }
+
+                    for(i in 20..200) {
+                        temperatureEntries.add(Entry(i.toFloat(),
+                            ((240/(3.92*pressure/(273+i)))*(25+frequency)*sqrt(radius/(100.toDouble()*distance)) *
+                                    pow(voltage.toDouble() - Vc!!, 2.toDouble()) * pow(10.toDouble(), (-5).toDouble())).toFloat()))
+
+                        pressureEntries.add(Entry(i.toFloat(),
+                            ((240/(3.92*i/(273+temperature)))*(25+frequency)*sqrt(radius/(100.toDouble()*distance)) *
+                                    pow(voltage.toDouble() - Vc!!, 2.toDouble()) * pow(10.toDouble(), (-5).toDouble())).toFloat()))
                     }
 
                     val intent = Intent(this, GraphActivity::class.java)
-                    intent.putParcelableArrayListExtra(GraphActivity.ENTRIES, entries)
+                    intent.putParcelableArrayListExtra(GraphActivity.RATIO_ENTRIES, ratioEntries)
+                    intent.putParcelableArrayListExtra(GraphActivity.TEMPERATURE_ENTRIES, temperatureEntries)
+                    intent.putParcelableArrayListExtra(GraphActivity.PRESSURE_ENTRIES, pressureEntries)
                     startActivity(intent)
                 } else {
                     toast("Calculate before plotting")
@@ -113,9 +128,9 @@ class MainActivity : AppCompatActivity() {
 
         m_v = (exp((-exp(1.0)) * (currentYear - yearsEditText.text.toString().toFloat()) / 100)).toFloat()
         relativeAirDensity = (3.92F * pressure) / (273 + temperature)
-        Vc = (radius * g_o * relativeAirDensity!! * m_v!! * log(100F * distance.toDouble() / radius)).toFloat()
+        Vc = (radius * SURFACE_GRADIENT_LIMIT * relativeAirDensity!! * m_v!! * log(100F * distance.toDouble() / radius)).toFloat()
         Vv =
-                (radius * g_o * relativeAirDensity!! * m_v!! * (1F + 0.3F / sqrt(radius.toDouble() * relativeAirDensity!!)) * log(
+                (radius * SURFACE_GRADIENT_LIMIT * relativeAirDensity!! * m_v!! * (1F + 0.3F / sqrt(radius.toDouble() * relativeAirDensity!!)) * log(
                     100F * distance.toDouble() / radius
                 )).toFloat()
 
@@ -132,7 +147,7 @@ class MainActivity : AppCompatActivity() {
         val newDel = 3.92F * pressure / 75.01 / (273 + temperature)
         dcLoss =
                 (2 * voltage * ((2.toDouble() / PI) * atan(2 * height.toDouble() / spacing) + 1) * 0.25 * subConductors * radius / 100 *
-                        pow(2.toDouble(), 0.25 * (maxSurfaceGrad - g_o * newDel)) * pow(
+                        pow(2.toDouble(), 0.25 * (maxSurfaceGrad - SURFACE_GRADIENT_LIMIT * newDel)) * pow(
                     10.toDouble(),
                     (-3).toDouble()
                 )).toFloat()
@@ -140,7 +155,7 @@ class MainActivity : AppCompatActivity() {
         for (i in 1..100) {
             dcLossRatioVar[i - 1] =
                     (2 * voltage * ((2.toDouble() / PI) * atan(2 / i.toDouble()) + 1) * 0.25 * subConductors * radius / 100 *
-                            pow(2.toDouble(), 0.25 * (maxSurfaceGrad - g_o * newDel)) * pow(
+                            pow(2.toDouble(), 0.25 * (maxSurfaceGrad - SURFACE_GRADIENT_LIMIT * newDel)) * pow(
                         10.toDouble(),
                         (-3).toDouble()
                     )).toFloat()
@@ -160,7 +175,7 @@ class MainActivity : AppCompatActivity() {
 
         while (i < 2) {
             val tempLoss = 241 * pow(10.toDouble(), (-5F).toDouble()) * ((frequency+25)/relativeAirDensity!!) *
-                    sqrt(i/(100.toDouble()*distance)) * pow((voltage - (i*g_o*m_v!!*relativeAirDensity!!*log(100.toDouble()*distance/i))), 2.toDouble())
+                    sqrt(i/(100.toDouble()*distance)) * pow((voltage - (i*SURFACE_GRADIENT_LIMIT*m_v!!*relativeAirDensity!!*log(100.toDouble()*distance/i))), 2.toDouble())
             if(tempLoss > maxLossEstimate) {
                 maxRadiusLoss = i
                 maxLossEstimate = tempLoss

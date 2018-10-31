@@ -7,4 +7,6 @@
     <color name="default_background">#FFFEEA</color>
     <color name="primaryTextColor">#000000</color>
     <color name="white">#FFFFFF</color>
+    <color name="gold">#FFD700</color>
+    <color name="neon_blue">#00DDFF</color>
 </resources>

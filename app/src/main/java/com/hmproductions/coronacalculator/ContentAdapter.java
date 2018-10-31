@@ -20,9 +20,9 @@ public class ContentAdapter extends FragmentPagerAdapter {
 
         switch (position) {
             case 0:
-                return new RatioFragment();
-            case 1:
                 return new WeatherFragment();
+            case 1:
+                return new RatioFragment();
             default:
                 return new RadiusFragment();
         }
@@ -38,9 +38,9 @@ public class ContentAdapter extends FragmentPagerAdapter {
 
         switch (position) {
             case 0:
-                return "HVDC";
-            case 1:
                 return "Weather";
+            case 1:
+                return "HVDC";
             default:
                 return "Radius";
         }
