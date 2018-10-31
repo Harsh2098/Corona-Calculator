@@ -2,12 +2,37 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="2dp">
+    android:layout_height="match_parent">
 
     <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/ratioLineChart"
+        android:id="@+id/baseLineChart"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="32dp" />
+
+    <TextView
+        android:id="@+id/yAxisLabelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="-80dp"
+        android:rotation="270"
+        android:text="@string/corona_power_loss_kw"
+        android:textAllCaps="true"
+        android:textColor="@color/primaryTextColor"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/xAxisLabelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:padding="8dp"
+        android:textAllCaps="true"
+        android:textColor="@color/primaryTextColor"
+        android:textStyle="bold" />
 
 </RelativeLayout>

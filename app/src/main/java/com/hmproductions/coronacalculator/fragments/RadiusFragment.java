@@ -8,6 +8,7 @@ import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
@@ -37,9 +38,9 @@ public class RadiusFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View customView =  inflater.inflate(R.layout.fragment_graph, container, false);
+        View customView = inflater.inflate(R.layout.fragment_graph, container, false);
 
-        LineChart lineChart = customView.findViewById(R.id.ratioLineChart);
+        LineChart lineChart = customView.findViewById(R.id.baseLineChart);
 
         if (getContext() != null) {
 
@@ -67,13 +68,12 @@ public class RadiusFragment extends Fragment {
             lineChart.getAxisLeft().setAxisLineColor(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark));
             lineChart.getAxisLeft().setAxisMinimum(0);
 
-            lineChart.getAxisRight().setTextSize(10);
-            lineChart.getAxisRight().setAxisLineWidth(3);
-            lineChart.getAxisRight().setAxisLineColor(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark));
-            lineChart.getAxisRight().setAxisMinimum(0);
+            lineChart.getAxisRight().setEnabled(false);
 
             lineChart.animateX(1500);
         }
+
+        ((TextView) customView.findViewById(R.id.xAxisLabelTextView)).setText(R.string.radius_cm);
 
         return customView;
     }

@@ -27,4 +27,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="corona_power_loss_kw">Corona Power Loss (kW)</string>
+    <string name="height_spacing">Height : Spacing</string>
+    <string name="weather_labels">Pressure (cm Hg) / Temperature (°C)</string>
 </resources>
