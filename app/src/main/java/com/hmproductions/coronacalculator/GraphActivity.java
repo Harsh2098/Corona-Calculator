@@ -61,5 +61,9 @@ public class GraphActivity extends AppCompatActivity {
         lineChart.getAxisRight().setAxisMinimum(0);
 
         lineChart.animateX(1500);
+
+        for(float i=0 ; i<4 ; i+=0.1) {
+
+        }
     }
 }

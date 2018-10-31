@@ -18,8 +18,10 @@ import java.util.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
-    val g_o = 21.2F
-    val currentYear = 2018F
+    // TODO : Compute max radius
+
+    private val g_o = 21.2F
+    private val currentYear = 2018F
 
     private var relativeAirDensity: Float? = null
     private var Vv: Float? = null
@@ -154,12 +156,26 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        var maxRadiusLoss = 0.0F
+        var i = 0F
+        var maxLossEstimate = 0.0
+
+        while (i < 2) {
+            val tempLoss = 241 * pow(10.toDouble(), (-5F).toDouble()) * ((frequency+25)/relativeAirDensity!!) *
+                    sqrt(i/(100.toDouble()*distance)) * pow((voltage - (i*g_o*m_v!!*relativeAirDensity!!*log(100.toDouble()*distance/i))), 2.toDouble())
+            if(tempLoss > maxLossEstimate) {
+                maxRadiusLoss = i
+                maxLossEstimate = tempLoss
+            }
+            i += 0.1f
+        }
+
         visualVoltageTextView.text = ": $Vv kV"
         criticalVoltagetextView.text = ": $Vc kV"
         acLossTextView.text = ": $acLoss kW"
         dcLossTextView.text = ": $dcLoss kW"
         ratioTextView.text = ": 1:$leastRatio"
-        maximumRadiusLossTextView.text = ": N/A"
+        maximumRadiusLossTextView.text = ": $maxRadiusLoss cm"
 
         calculated = true
     }

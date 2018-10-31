@@ -124,6 +124,7 @@
                         android:inputType="number"
                         android:maxLength="30"
                         android:maxLines="1"
+                        android:text="50"
                         android:textSize="16sp" />
 
                 </android.support.design.widget.TextInputLayout>
@@ -166,6 +167,7 @@
                 android:inputType="number"
                 android:maxLength="30"
                 android:maxLines="1"
+                android:text="2011"
                 android:textSize="16sp" />
 
         </android.support.design.widget.TextInputLayout>
