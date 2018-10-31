@@ -2,9 +2,9 @@ package com.hmproductions.coronacalculator
 
 import android.content.Context
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -14,11 +14,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.contentView
 import org.jetbrains.anko.toast
 import java.lang.Math.*
-import java.util.ArrayList
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
-
-    // TODO : Compute max radius
 
     private val g_o = 21.2F
     private val currentYear = 2018F

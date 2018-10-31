@@ -60,6 +60,7 @@
                         android:inputType="numberDecimal"
                         android:maxLength="30"
                         android:maxLines="1"
+                        android:text="440"
                         android:textSize="16sp" />
 
                 </android.support.design.widget.TextInputLayout>

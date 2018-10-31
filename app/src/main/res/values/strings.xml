@@ -24,4 +24,7 @@
     <string name="year_of_installation">Year of Installation</string>
     <string name="plot">Plot</string>
     <string name="base_start">: -</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
